@@ -14,6 +14,7 @@ mqtt:
     auto_discovery_topic: homeassistant
     auto_discovery_topic_retain: False
     discovery: False
+    temperature_sensor: True
 
 ##Devices
 devices:

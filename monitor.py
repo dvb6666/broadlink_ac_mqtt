@@ -82,6 +82,7 @@ def read_config(config_file_path):
 	config["mqtt_topic_prefix"] = config_file["mqtt"]["topic_prefix"]
 	config["mqtt_auto_discovery_topic"] = config_file["mqtt"]["auto_discovery_topic"] if "auto_discovery_topic" in config_file["mqtt"] else False
 	config["mqtt_auto_discovery_topic_retain"] = config_file["mqtt"]["auto_discovery_topic_retain"] if "auto_discovery_topic_retain" in config_file["mqtt"] else False
+	config["mqtt_temperature_sensor"] = config_file["mqtt"]["temperature_sensor"] if "temperature_sensor" in config_file["mqtt"] else False
 	
 	
 

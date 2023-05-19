@@ -189,7 +189,7 @@ class AcToMqtt:
 				,"swing_modes": ["TOP", "MIDDLE1", "MIDDLE2", "MIDDLE3", "BOTTOM", "SWING",  "AUTO"]
 				,"max_temp":32.0
 				,"min_temp":16.0
-				,"precision": 0.5
+				,"precision": 0.1
 				,"temp_step": 0.5 ## @Anonym-tsk
 				,"unique_id": device.status["macaddress"]
 				,"device" : {"ids":device.status["macaddress"],"name":str(name.decode("utf-8")),"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}				
@@ -229,6 +229,19 @@ class AcToMqtt:
 			topic = self.config["mqtt_auto_discovery_topic"]+"/climate/"+key+"/config"
 			##Publish						
 			self._publish(topic,json.dumps(device), retain = retain)			
+			if(self.config["mqtt_temperature_sensor"]):
+				topic_sensor = self.config["mqtt_auto_discovery_topic"]+"/sensor/"+key+"/temperature/config"
+				temperature_sensor = {
+					"name": device["name"]+" Temperature"
+					,"unique_id": device["unique_id"]+"_temperature"
+					,"device" : {"ids":device["unique_id"],"name":device["name"],"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}
+					,"state_topic": device["current_temperature_topic"]
+					,"availability_topic": device["availability_topic"]
+					,"device_class": "temperature"
+					,"unit_of_measurement": "°C"
+					,"state_class": "measurement"
+				}
+				self._publish(topic_sensor,json.dumps(temperature_sensor), retain = retain)
 				
 	def publish_mqtt_info(self,status,force_update = False) :	
 		##If auto discovery is used, then always update
