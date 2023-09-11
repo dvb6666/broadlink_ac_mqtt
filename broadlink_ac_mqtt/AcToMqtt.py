@@ -172,7 +172,7 @@ class AcToMqtt:
 				name = device.name.encode('ascii','ignore')
 				
 			device_array = { 
-				"name": str(name.decode("utf-8"))
+				"name": "Climate"
 				#,"power_command_topic" : self.config["mqtt_topic_prefix"]+  device.status["macaddress"]+"/power/set"
 				,"mode_command_topic" : self.config["mqtt_topic_prefix"]+  device.status["macaddress"]+"/mode_homeassistant/set"
 				,"temperature_command_topic" : self.config["mqtt_topic_prefix"]  + device.status["macaddress"]+"/temp/set"
@@ -233,7 +233,7 @@ class AcToMqtt:
 			if(self.config["mqtt_temperature_sensor"]):
 				topic_sensor = self.config["mqtt_auto_discovery_topic"]+"/sensor/"+key+"/temperature/config"
 				temperature_sensor = {
-					"name": device["name"]+" Temperature"
+					"name": "Temperature"
 					,"unique_id": device["unique_id"]+"_temperature"
 					,"device" : {"ids":device["unique_id"],"name":device["name"],"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}
 					,"state_topic": device["current_temperature_topic"]
