@@ -192,7 +192,7 @@ class AcToMqtt:
 				,"min_temp":16.0
 				,"precision": 0.1
 				,"temp_step": 0.5 ## @Anonym-tsk
-				,"unique_id": device.status["macaddress"]
+				,"unique_id": device.status["macaddress"]+"_climate"
 				,"device" : {"ids":device.status["macaddress"],"name":str(name.decode("utf-8")),"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}				
 				,"pl_avail":"online"
 				,"pl_not_avail":"offline"
