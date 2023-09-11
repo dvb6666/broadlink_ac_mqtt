@@ -235,7 +235,7 @@ class AcToMqtt:
 				temperature_sensor = {
 					"name": "Temperature"
 					,"unique_id": device["device"]["ids"]+"_temperature"
-					,"device" : {"ids":device["unique_id"],"name":device["device"]["name"],"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}
+					,"device" : {"ids":device["device"]["ids"],"name":device["device"]["name"],"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}
 					,"state_topic": device["current_temperature_topic"]
 					,"availability_topic": device["availability_topic"]
 					,"device_class": "temperature"
