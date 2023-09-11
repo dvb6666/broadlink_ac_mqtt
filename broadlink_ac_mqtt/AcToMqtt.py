@@ -234,8 +234,8 @@ class AcToMqtt:
 				topic_sensor = self.config["mqtt_auto_discovery_topic"]+"/sensor/"+key+"/temperature/config"
 				temperature_sensor = {
 					"name": "Temperature"
-					,"unique_id": device["unique_id"]+"_temperature"
-					,"device" : {"ids":device["unique_id"],"name":device["name"],"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}
+					,"unique_id": device["device"]["ids"]+"_temperature"
+					,"device" : {"ids":device["unique_id"],"name":device["device"]["name"],"model":'Aircon',"mf":"Broadlink","sw":broadlink.version}
 					,"state_topic": device["current_temperature_topic"]
 					,"availability_topic": device["availability_topic"]
 					,"device_class": "temperature"
