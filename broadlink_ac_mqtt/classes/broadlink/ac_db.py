@@ -716,10 +716,10 @@ class ac_db(device):
 				self.logger.debug ("AcInfo: Invalid, seems to short?")	
 				return 0
 
-			##Its only the last 5 bits?		  
-			ambient_temp = (float(response_payload[15] & 0b00011111) + float(response_payload[31] & 0b00011111)/10.0)
+			##Its only the last 6 bits?
+			ambient_temp = (float(response_payload[15] & 0b00111111) + float(response_payload[31] & 0b00011111)/10.0)
 			
-			self.logger.debug("Ambient Temp Decimal: %s" % float(response_payload[31] & 0b00011111) ) ## @Anonym-tsk
+			self.logger.debug("Ambient Temp Decimal: %s" % float(response_payload[31] & 0b00111111) ) ## @Anonym-tsk
 			self.logger.debug("Ambient Temp Total: %s" % ambient_temp )
 
 			if ambient_temp:
